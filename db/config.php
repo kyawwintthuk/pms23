@@ -1,8 +1,13 @@
 <?php
-    $servername = "sql108.epizy.com";
-    $username = "epiz_33536210";
-    $password = "wGR8ACZJcL";
-    $dbname = "epiz_33536210_pms";
+    // $servername = "sql108.epizy.com";
+    // $username = "epiz_33536210";
+    // $password = "wGR8ACZJcL";
+    // $dbname = "epiz_33536210_pms";
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "pms23";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     mysqli_set_charset($conn, "utf8");
