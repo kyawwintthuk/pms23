@@ -1,4 +1,4 @@
-PMS 23 https://github.com/kyawwintthuk/bts22
+PMS 23 https://github.com/kyawwintthuk/pms23
 
 (1) If you don't have Git in Windows, download first this → https://git-scm.com/download/win
 
