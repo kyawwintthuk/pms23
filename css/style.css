@@ -1,0 +1,431 @@
+.navbar {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    z-index: 99;
+    top: 0;
+}
+
+.navbar-brand a {
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.card-header {
+    background-color: #fff;
+}
+
+.row {
+    margin: 0px 0px 5px 0px;
+}
+
+.row :hover {
+    cursor: pointer;
+}
+
+.category :hover {
+    cursor: pointer;
+}
+
+.button-corner {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.button-corner a {
+    background-color: #a6adaa;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* font-size: 16px; */
+    width: 10px;
+    margin: 4px 2px;
+    border-radius: 50%;
+}
+
+/* #loading_spinner {
+    display: none;
+} */
+
+/* 20230711 Tuesday 14:51PM add KWT start --> */
+.location {
+    /* position: absolute; */
+    /* background-color: #c50e0e; */
+    color: white;
+    /* padding: 3px; */
+    /* transform: translate(-50%, -50%); */
+    text-align: center;
+}
+
+.location span{
+    display: block;
+}
+
+#location_name {
+    background-color: #a7ba9b;
+}
+/* 20230711 Tuesday 14:51PM add KWT end --< */
+
+.price {
+    position: absolute;
+    /* background-color: #c50e0e; */
+    color: white;
+    padding: 3px;
+    transform: translate(-50%, -50%);   
+    text-align: center;
+}
+
+.price span {
+    display: block;
+}
+
+#price_tax_included_ {
+    background-color: #c50e0e;
+}
+
+#price_tax_excluded_ {
+    background-color: #87aaed;
+}
+
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+/*  Tabbed Panels start -- 20230629 Thursday -- */
+/* start */
+.tab-bar {
+    list-style: none;
+    margin: 0;
+    padding: 10px 10px 0 10px;
+    background: #f8fbff;
+    overflow: hidden;
+}
+
+.tab-bar li {
+    padding: 8px 20px;
+    float: left;
+    margin-right: 8px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.panel {
+    min-height: 200px;
+    border: 1px solid #f8fbff;
+    border-top: 0 none;
+    padding: 15px;
+}
+
+#tab-2 {
+    background: #e3f2f3;
+}
+
+#panel-2 {
+    display: none;
+}
+/*  Tabbed Panels end -- 20230629 Thursday -- */
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+
+@media (min-width: 400px) {
+    /* 20230711 Tuesday 14:52PM */
+    /* .location{
+        top: 60px;
+        right: -48px;
+    } */
+
+    .price {
+        top: 116px;
+        right: -48px;
+    }
+
+    .container-expand {
+        margin-top: 268px;
+    }
+
+    /* .image-container img {
+        float: right;
+        width: 400px;
+        height: 209px;
+    } */
+
+    #loading_spinner {
+        width: 278px;
+        margin-top: 108px;
+    }
+
+    .nav-item a {
+        font-size: 52px;
+    }
+
+    .navbar-brand a {
+        font-size: 49px;
+    }
+
+    .navbar-brand table {
+        font-size: 39px;
+    }
+
+    .container {
+        max-width: 936px;
+    }
+
+    img {
+        width: 100%;
+        height: 301px;
+    }
+
+    .expiry tr #imgCol {
+        width: 30%;
+    }
+
+    .card-header,
+    .card-body {
+        font-size: 43px;
+    }
+
+    .card-header #category {
+        font-size: 39px;
+    }
+
+    .card-body span {
+        font-size: 39px;
+    }
+
+    h4 {
+        font-size: 50px;
+    }
+
+
+    .tab-bar > li {
+        font-size: 38px;
+    }
+
+    .table thead {
+        font-size: 39px;
+    }
+
+    .table tbody {
+        font-size: 44px;
+    }
+
+    .font-style {
+        font-size: 44px !important;
+    }
+
+    .table tbody tr td input[type="text"] {
+        width: 100%;
+        height: 100%;
+        font-size: 36px;
+    }
+
+    #ui-datepicker-div {
+        font-size: 35px;
+    }
+
+    .button-corner a {
+        width: 153px;
+        font-size: 76px;
+
+    }
+
+    .add_radio_buttons label {
+        font-size: 54px;
+    }
+
+    /**********************************************/
+    /* Floating Input Placeholders with HTML/CSS */
+    /* https://dev.to/felix/floating-input-placeholders-with-html-css-ej4 */
+    /* start */
+    #label {
+        color: #999;
+        transform: translate(1.25rem, -0rem);
+        transition: all 0.2s ease-out;
+        position: absolute;
+        top: 5px;
+        /* position: absolute;
+    top: 10px;
+    left: 18px; */
+    }
+
+    .input-wrap {
+        position: relative;
+    }
+
+    input:focus+#label,
+    input:not(:placeholder-shown)+#label {
+        color: rgb(137 137 137);
+        font-weight: bold;
+        font-size: 30px;
+        transform: translate(0.8rem, -3.3rem);
+    }
+
+    .form-control {
+        font-size: unset;
+    }
+
+    .input-div {
+        padding-bottom: 30px;
+    }
+
+    input[type='checkbox'] {
+        transform: scale(3);
+        margin-right: 12px;
+    }
+
+    input[type='radio'] {
+        transform: scale(3);
+        margin: 10px !important;
+    }
+    
+}
+
+@media (min-width: 1000px) {
+    /* 20230711 Tuesday 14:52PM */
+    /* .location {
+        top: 22px;
+        right: -28px;
+    } */
+
+    .price {
+        top: 51px;
+        right: -28px;
+    }
+
+    .container-expand {
+        margin-top: 153px;
+    }
+
+    /* .image-container img {
+        float: right;
+        width: 263px;
+        height: 99px;
+        margin-right: 61px;
+    } */
+
+    #loading_spinner {
+        width: 126px;
+        margin-top: 90px;
+    }
+
+    .nav-item a {
+        font-size: inherit;
+    }
+
+    .navbar-brand a {
+        font-size: 25px;
+    }
+
+    .navbar-brand table {
+        font-size: 18px;
+    }
+
+    img {
+        width: 100%;
+        height: 123px;
+    }
+
+    .expiry tr #imgCol {
+        width: 13%;
+    }
+
+    .card-header,
+    .card-body {
+        /* font-size: 25px; */
+        font-size: 17px;
+    }
+
+    .card-header #category {
+        font-size: 17px;
+    }
+
+    .card-body span {
+        font-size: 17px;
+    }
+
+    h4 {
+        font-size: 25px;
+    }
+
+    .tab-bar > li {
+        font-size: 16px;
+    }
+
+    .table thead {
+        font-size: 16px;
+    }
+
+    .table tbody {
+        font-size: 16px;
+    }
+
+    .font-style {
+        font-size: 16px !important;
+    }
+
+    .table tbody tr td input[type="text"] {
+        width: 100%;
+        height: 100%;
+        font-size: 17px;
+    }
+
+    #ui-datepicker-div {
+        font-size: 14px;
+    }
+
+    .button-corner a {
+        width: 70px;
+        font-size: 20px;
+
+    }
+
+    .add_radio_buttons label {
+        font-size: 24px;
+    }
+
+    /**********************************************/
+    /* Floating Input Placeholders with HTML/CSS */
+    /* https://dev.to/felix/floating-input-placeholders-with-html-css-ej4 */
+    /* start */
+    #label {
+        color: #999;
+        transform: translate(0.69rem, -1.8rem);
+        transition: all 0.2s ease-out;
+        position: absolute;
+        top: 34px;
+        /* position: absolute;
+    top: 10px;
+    left: 18px; */
+    }
+
+    .input-wrap {
+        position: relative;
+    }
+
+    input:focus+#label,
+    input:not(:placeholder-shown)+#label {
+        color: rgb(137 137 137);
+        font-weight: bold;
+        font-size: 15px;
+        transform: translate(0.3rem, -3.5rem);
+    }
+
+    /* .form-control{
+        font-size: 3rem;
+    } */
+
+    .input-div {
+        padding-bottom: 8px;
+    }
+
+    input[type='checkbox'] {
+        transform: inherit;
+    }
+
+    input[type='radio'] {
+        transform: inherit;
+    }
+}

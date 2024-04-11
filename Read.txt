@@ -1,0 +1,14 @@
+***************************************
+PMS
+***************************************
+* 13 Feb 2023 (Monday)    - Coding started - 
+* 16 Feb 2023 (Thuresday) - Coding 50% Finished
+* 26 June 2023 (Monday)   - Coding added for product price
+* 13 July 2023 (Thuresday)   - Coding added for setting (radio button selected value)
+
+
+
+
+***************************************
+Copyright by KWT Co.,Ltd 2023
+***************************************
