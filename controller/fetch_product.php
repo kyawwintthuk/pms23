@@ -86,8 +86,8 @@ foreach ($conn->query($sql1) as $row) {
                                 <span id="location_name">'. $location .'</span>
                             </div>
                             <div class="price">
-                                <span id="price_tax_included_">[ ' . $price_tax_included . ' ]</span>
-                                <span id="price_tax_excluded_"> ' . $price_tax_excluded . ' </span>
+                                <span id="price_tax_included_">[ ' . number_format($price_tax_included) . ' ]</span>
+                                <span id="price_tax_excluded_"> ' . number_format($price_tax_excluded) . ' </span>
                             </div>                           
                             <img src="' . $image_url . '" alt="' . $row['name'] . '">
                         </div>
