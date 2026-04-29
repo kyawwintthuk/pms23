@@ -132,7 +132,27 @@ include('includes/header.php');
     //     // alert("the orientation of the device is now " + screen.orientation.angle);
     // });
 
+
     $(document).ready(function() {
+          fetch_ip_list();
+        
+        // function fetch_ip_list() {
+        //     $.ajax({
+        //         url: 'fetch_ip_list.php',
+        //         type: 'POST',
+        //         data: {
+        //             ip_address: <?php echo json_encode($_SERVER['REMOTE_ADDR']) ?>,
+        //             device_name: <?php echo json_encode($_SERVER['HTTP_USER_AGENT']) ?>
+        //         }
+        //         ,
+        //         success: function(data) {
+        //             alert(data);
+        //             if(data == '403'){
+        //                 // window.location.href = '403.php';
+        //             }
+        //         }
+        //     });
+        // }
 
         fetch_product();
 
