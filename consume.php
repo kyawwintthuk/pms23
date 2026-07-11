@@ -125,7 +125,7 @@ $tax_percentage = $conn->query($sql5)->fetch_assoc()['tax_percentage'];
                                     <td><input class="input form-control" type="text" id="add_consume_date"></td>
                                     <td><input class="input form-control" type="text" id="add_eaten_date"></td>
                                     <td><input class="input form-control" type="text" id="add_expire_date"></td>
-                                    <td><input class="input form-control" type="text" id="add_note"></td>
+                                    <td><input class="input form-control" type="text" id="add_note_1"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -192,7 +192,7 @@ $tax_percentage = $conn->query($sql5)->fetch_assoc()['tax_percentage'];
                                     <td><input class="input form-control" type="text" id="add_date" value="<?= date('d-m-Y') ?>"></td>
                                     <td><input class="input form-control input-number" type="text" id="add_price_tax_included" value="0"></td>
                                     <td><input class="input form-control input-number" type="text" id="add_price_tax_excluded" value="0"></td>
-                                    <td><input class="input form-control" type="text" id="add_note"></td>
+                                    <td><input class="input form-control" type="text" id="add_note_2"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -458,11 +458,9 @@ $tax_percentage = $conn->query($sql5)->fetch_assoc()['tax_percentage'];
         });
     });
 
-    function action_button(i) {
-        // alert(i);
+    function action_button(i) {        
         var actionButton = $('#action-button-' + i).text();
         if (i == 1) { // 1 for consume
-
             if (actionButton == 'Add') {
                 ajax('controller/add_consume.php', 'POST', {
                     'name': '<?= $product_name ?>',
@@ -472,7 +470,7 @@ $tax_percentage = $conn->query($sql5)->fetch_assoc()['tax_percentage'];
                     'expire_date': $('#add_expire_date').val(),
                     // 'price_tax_included': $('#add_price_tax_included').val(),
                     // 'price_tax_excluded': $('#add_price_tax_excluded').val(),
-                    'note': $('#add_note').val(),
+                    'note': $('#add_note_'+i).val(),
                     'product_id': '<?= $product_id ?>'
                 }).then(function(data) {
                     var $row = data;
@@ -480,7 +478,7 @@ $tax_percentage = $conn->query($sql5)->fetch_assoc()['tax_percentage'];
 
                     $('#consume_data').before($row);
 
-                    $('#add_note').val('');
+                    // $('#add_note').val('');
 
                     // $row.find('.editable').click(function() {
                     //     // console.log($(this));
@@ -525,7 +523,7 @@ $tax_percentage = $conn->query($sql5)->fetch_assoc()['tax_percentage'];
             }
 
         } else { // 2 for price            
-
+        //    alert($('#add_note_'+i).val());
             if (actionButton == 'Add') {
                 ajax('controller/add_price.php', 'POST', {
                     'product_id': '<?= $product_id ?>',
@@ -534,7 +532,7 @@ $tax_percentage = $conn->query($sql5)->fetch_assoc()['tax_percentage'];
                     'date': $('#add_date').val(),
                     'price_tax_included': $('#add_price_tax_included').val(),
                     'price_tax_excluded': $('#add_price_tax_excluded').val(),
-                    'note': $('#add_note').val(),
+                    'note': $('#add_note_'+i).val()
                 }).then(function(data) {
                     var $row = data;
                     $('#price_data').before($row);

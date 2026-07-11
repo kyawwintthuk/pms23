@@ -16,10 +16,12 @@ $product_id = $_POST['product_id'];
 $location = $_POST['location'];
 $name = $_POST['name'];
 $date = isNull($_POST['date']);
-$description = $_POST['description'];
+// $description = $_POST['description'];
+$note = $_POST['note'];
 $price_tax_included = str_replace(',', '', $_POST['price_tax_included']);
 $price_tax_excluded = str_replace(',', '', $_POST['price_tax_excluded']);
 $sys_date = date('Y-m-d');
+
 
 $sql1 = "
     INSERT INTO `product_price`(`product_id`, `location`, `name`, `date`, `price_tax_included`, `price_tax_excluded`, `note`,  `sys_date`) 
