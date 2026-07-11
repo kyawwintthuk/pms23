@@ -134,7 +134,7 @@ include('includes/header.php');
 
 
     $(document).ready(function() {
-          fetch_ip_list();
+        //   fetch_ip_list();
         
         // function fetch_ip_list() {
         //     $.ajax({
