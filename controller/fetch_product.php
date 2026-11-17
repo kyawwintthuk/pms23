@@ -36,8 +36,8 @@ foreach ($conn->query($sql1) as $row) {
                 <div class="row">
     ';
 
-    $sql3 = "SELECT id, name, description , image_url, price_tax_excluded, price_tax_included, quantity FROM `product` WHERE category_id = " . $row['id'] . "";
-    // echo $sql2;
+    $sql3 = "SELECT id, name, description , image_url, price_tax_excluded, price_tax_included, quantity FROM `product` WHERE category_id = " . $row['id'] . " ORDER BY date DESC";
+    // echo $sql3;
     // $output .= '
     //     <div class="card">
     //         <div class="card-header">

@@ -1,4 +1,10 @@
 <?php
+    session_start();
+
+    if(!isset($_SESSION['login'])){
+        header("Location: login.php");
+    }
+    
     include('db/config.php');
     include('includes/header.php');
     $sql1 =  "SELECT * FROM `product`";

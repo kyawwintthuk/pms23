@@ -9,8 +9,8 @@ $category = $_POST['category'];
 $name = $_POST['name'];
 $description = $_POST['description'];
 $image_url = $_POST['image_url'];
-$price_tax_included = $_POST['price_tax_included'];
-$price_tax_excluded = $_POST['price_tax_excluded'];
+$price_tax_included = (isset($_POST['price_tax_included'])) ? $_POST['price_tax_included'] : 0 ;
+$price_tax_excluded = (isset($_POST['price_tax_excluded'])) ? $_POST['price_tax_excluded'] : 0;
 $quantity = $_POST['quantity'];
 $tax_percentage = $_POST['tax_percentage'];
 $date = date('Y-m-d', strtotime($_POST['date']));
@@ -77,7 +77,7 @@ if (isset($_POST['edit'])) {
 
 if (isset($_POST['delete'])) {
     if($operation == 'Category'){        
-        $row = $conn->query("SELECT COUNT(*) AS i FROM `product` WHERE id = ". $id)->fetch_assoc();        
+        $row = $conn->query("SELECT COUNT(*) AS i FROM `product` WHERE category_id = ". $id)->fetch_assoc();        
         if($row['i'] > 0){
             $_SESSION['color'] = "#f98686";  //error
             $_SESSION['message'] = "You cannot delete this category because there are some products assigned to it. 
@@ -88,17 +88,18 @@ if (isset($_POST['delete'])) {
     }
 
     if($operation == 'Product'){
-        $row = $conn->query("SELECT COUNT(*) AS i FROM `consume` WHERE product_id = ".$id)->fetch_assoc();
+        // echo "SELECT COUNT(*) AS i FROM `product_price` WHERE product_id = ".$id;
+        $row = $conn->query("SELECT COUNT(*) AS i FROM `product_price` WHERE product_id = ".$id)->fetch_assoc();
         if($row['i'] > 0){
             $_SESSION['color'] = "#f98686"; //error
             $_SESSION['message'] = "You cannot delete this product because there are some consume data assigned to it.
-            Please remove all consume data from this product before deleting it.";
+            Please remove all price data from this product before deleting it.";
             header('Location: ../add-product.php?id='.$id.'.1');
             return; //Stop code execution
         }
     }
 
-    $sql = "DELETE FROM `" . $operation . "` WHERE id = " . $id;
+    $sql = "DELETE FROM `" . strtolower($operation) . "` WHERE id = " . $id;
     // die($sql);
     $result = $conn->query($sql);
     if ($result == TRUE) {

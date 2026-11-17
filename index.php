@@ -1,11 +1,20 @@
 <?php
-// if(!isset($_SESSION['login'])){
-//     header("Location: login.php");
-// }
+session_start();
+
+if(!isset($_SESSION['login'])){
+    header("Location: login.php");
+}
 
 include('db/config.php');
 include('includes/header.php');
 // echo $_SERVER['HTTP_USER_AGENT'];
+
+$res = $conn->query("SELECT value FROM `setting` WHERE product_id = 0");
+if ($res->num_rows > 0) {
+    $select_option = $res->fetch_assoc()['value'];
+} else {
+    $select_option = 'All';
+}
 
 ?>
 <!-- <div class="container" style="margin-top: 153px;"> -->
@@ -13,13 +22,13 @@ include('includes/header.php');
 
     <div style="background-color: #e9fdff; margin-bottom: 24px;">
     <!-- 20230724 Monday KWT 15:16 PM start -->
-        <input type="radio" name="category" id="all" style="margin: 0px;" value=""  checked="true">
+        <input type="radio" name="category" id="all" style="margin: 0px;" value="" <?= ('All' == $select_option) ? 'checked' : '' ?>>
         <label for="all" style="padding-right: 7px;" class="font-style">All</label>
         <?php
         $sql = "SELECT * FROM `category`";
         foreach ($conn->query($sql) as $row) {
         ?>
-            <input type="radio" name="category" id="<?= $row['name'] ?>"  value="<?= $row['id'] ?>" style="margin: 0px;">
+            <input type="radio" name="category" id="<?= $row['name'] ?>"  value="<?= $row['id'] ?>" <?= ($row['name'] == $select_option) ? 'checked' : '' ?> style="margin: 0px;">
             <label for="<?= $row['name'] ?>" style="padding-right: 7px;" class="font-style"><?= $row['name'] ?></label>
         <?php } ?>
     </div>
@@ -167,13 +176,25 @@ include('includes/header.php');
 
         function fetch_product() {
 
-            var selected_value = $('input[type=radio]:checked').val();                     
+            var selected_id = $('input[type=radio]:checked').val();  
+            var selected_value =  $('input[type=radio]:checked').next('label').text();
+            
+            ajax('controller/update_setting.php', 'POST', {
+                'product_id': 0,
+                'value': selected_value
+            }).then(function(data) {
+                console.log(data);
+
+            }).catch(function(error) {
+                console.error(error);
+            });
+
 
             $.ajax({
                 url: 'controller/fetch_product.php',
                 method: 'GET',
                 data: {
-                    category_id : selected_value
+                    category_id : selected_id
                 },
                 async: true, // avoid blocking the page rendering
                 success: function(data) {

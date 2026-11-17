@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if(!isset($_SESSION['login'])){
+    header("Location: login.php");
+}
+
 include('db/config.php');
 include('includes/header.php');
 session_start();
@@ -96,42 +102,7 @@ if (isset($_GET['id'])) {
                             <div class="form-group mb-3 input-wrap input-div for-category-block">
                                 <input type="text" id="tax_percentage" name="tax_percentage" placeholder=" " class="input form-control" <?= ($isEdit) ? ($status == 2) ? 'value="' . $category['tax_percentage'] . '"' : '' : 'value="8"' ?>>
                                 <label id="label" for="tax_percentage">Tax %</label>
-                            </div>
-                            <?php
-                            if ($isEdit) {
-                                $result = $conn->query("SELECT location FROM `product_location` WHERE product_id = " . $product['id'] . "");
-                                if ($result && $result->num_rows > 0) {
-                                    // $location = $result->fetch_assoc()['location'];                                
-                                    // foreach ($arr as $loc) {
-                                    $sql = "SELECT id, DATE_FORMAT(MAX(date), '%Y-%m-%d') AS date, date AS date1, location,  price_tax_included, price_tax_excluded  FROM `product_price` WHERE product_id =  " . $product['id'] . " AND name = '" . $product['name'] . "' GROUP BY location ORDER BY date DESC;";
-                                    // echo $sql;
-                                    foreach ($conn->query($sql) as $row) {
-                            ?>
-                                        <div class="form-group mb-3 input-wrap input-div for-product-block" data-id="<?= $row['id'] ?>" data-product-id="<?= $product['id'] ?>" data-location="<?= $row['location'] ?>" data-date="<?= $row['date1'] ?>">
-                                            <table style="width: 100%;">
-                                                <tr>
-                                                    <td colspan="2"><?= $row['location'] . ' [' . $row['date'] . ']' ?></td>
-                                                </tr>
-                                                <tr data-id="<?= $row['id'] ?>">
-                                                    <td contenteditable="true" style="background-color: #ebf1fa; width: 100px; overflow: hidden; white-space: nowrap;" class="forPrice" contenteditable="true" id="price_tax_excluded"><?= $row['price_tax_excluded'] ?></td>
-                                                    <td contenteditable="true" style="background-color: #fff9d6; width: 100px; overflow: hidden; white-space: nowrap;" class="forPrice" contenteditable="true" id="price_tax_included"><?= $row['price_tax_included'] ?></td>                                                    
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    <?php
-                                    }
-                                } else {
-                                    // $location = null;
-                                    ?>
-                                    <div class="form-group mb-3 input-wrap input-div for-product-block">
-                                        <a href="product-location.php">Go to product location!</a>
-                                    </div>
-
-                            <?php
-                                }
-                            }
-                            ?>
-
+                            </div>                            
 
                             <!-- <td>
                                 <input type="hidden" name="location" value="<?= $loc ?>">
@@ -187,8 +158,7 @@ if (isset($_GET['id'])) {
                 $(".button-corner").slideDown(100);
             }
         }).scroll();
-
-
+        
         radioButton($('input[name=operation]:checked').val());
 
         var imagePath = $('#image_url').val();
@@ -204,7 +174,7 @@ if (isset($_GET['id'])) {
             dateFormat: 'dd-mm-yy'
         });
 
-        $('input[type=radio]').on('change', function() {
+        $('input[type=radio]').on('change', function() {            
             radioButton($('input[name=operation]:checked').val());
             // var value = $('input[name=operation]:checked').val();
             // if (value == 'Property') {
@@ -285,7 +255,7 @@ if (isset($_GET['id'])) {
     });
 
     function radioButton(value) {
-        // var value = $('input[name=operation]:checked').val();
+        // var value = $('input[name=operation]:checked').val();        
         if (value == 'Product') {
             $('.for-product-block').css('display', 'block');
             $('.for-category-block').css('display', 'none');
